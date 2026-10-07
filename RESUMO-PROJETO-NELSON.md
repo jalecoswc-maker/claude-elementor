@@ -11,14 +11,14 @@ Site em Elementor do psicanalista Nelson Salustiano (Indaiatuba), em subdominio 
 
 ## Identidade (aprovada)
 - Design salvo e ativo no Novamira: "Escuta Serena" (slug `nelson-salustiano`)
-- Cores: azul-acinzentado #3E5260, areia #F4EFE8, terracota #9C5638 (botoes, texto branco), verde-salvia #8A9A87, texto #2B2F33, azul escuro do rodape #2F3F4A
+- Cores atuais ("Escuta Viva"): turquesa #007C89, turquesa escuro #00525C (rodape), vermelho-coral #D63E24 (botoes, texto branco), amarelo-sol #FFD166 (detalhes), creme #FFF8EC, aqua claro #D6F3EF, texto #12333A
 - Fontes: Lora (titulos) e Inter (texto), gravadas no Kit global (kit 5)
 
 ## Dados do profissional
 - Nelson Salustiano, Psicanalista Clinico e Psicoterapeuta, especializacao em Trauma e Tanatologia, registro ANTPC-RP 842/22
 - Instituto Laar, R. Ademar de Barros, 475, Sala 6, Centro, Indaiatuba - SP, CEP 13330-130
 - WhatsApp/telefone: (19) 98157-0264
-- Horarios: terca a sexta, 09h as 18h. Segunda, sabado e domingo fechado
+- Horarios: segunda a sexta, 09h as 18h. Sabado e domingo fechado
 - Atendimento individual, adultos, presencial e online. NAO atende casais
 
 ## O que ja esta no site
