@@ -85,3 +85,28 @@ Objetivo: criar um site novo igual em estrutura, trocando so dados, textos, core
 
 ## Como pedir ao Claude para replicar (prompt curto)
 "Replique o site do Nelson para <CLIENTE> seguindo o PLAYBOOK-REPLICAR-SITE.md e o ESTRATEGIA-SEO-NELSON.md. Dados do cliente: <...>. Servidor MCP: <nome>. Use as mesmas estruturas e a paleta <...>."
+
+## 11. KIT DE MODELOS (importar em vez de reconstruir)
+Os modelos do Elementor do site do Nelson estao publicados como arquivos em:
+`https://psicanalistanelsonsalustiano.meunegocioo.com.br/wp-content/uploads/replica-kit-8f3a2c/`
+(nao fica no git para nao gastar tokens; o servidor do site novo baixa direto de la. Enquanto o site do Nelson estiver no ar, o kit esta disponivel).
+
+Arquivos: `manifest.json` (indice, tipos, condicoes), `home`, `sobre`, `faq`, `contato`, `categoria-servico`, `cabecalho`, `rodape`, `artigo`, `blog-lista`, `blog-categoria`, `cartao-loop` (todos `.json` com o `_elementor_data`), `kit-settings.json` (cores e fontes globais), `schema-plugin.txt` (mu-plugin de dados estruturados) e `importer.txt`.
+
+Uso no site NOVO (via `novamira/execute-php`):
+```php
+$u = 'https://psicanalistanelsonsalustiano.meunegocioo.com.br/wp-content/uploads/replica-kit-8f3a2c/';
+eval('?>' . wp_remote_retrieve_body(wp_remote_get($u . 'importer.txt')));
+return nk_import([
+  'kit_url' => $u,
+  'dry_run' => true,            // primeiro simular; depois false
+  'colors'  => ['#007C89' => '#NOVA', '#00525C' => '#NOVA2', '#D6F3EF' => '#NOVA3'],
+  'text'    => ['Nelson Salustiano' => 'Nome do Cliente', 'Indaiatuba' => 'Cidade'],
+  'only'    => [],             // vazio = tudo; ou ['cabecalho','rodape','home']
+]);
+```
+- O importador troca cores e textos por mapa, remove as imagens (o cliente aplica as dele), cria paginas e templates, religa o `template_id` do loop e salva as condicoes do Theme Builder.
+- Nao faz: reescrever textos de nicho (psicologia -> outro), imagens, SEO, artigos, formulario de destino, paginas legais. Isso segue o playbook.
+- Status: leitura e `dry_run` testados; a importacao real ainda nao foi testada num site novo. Rode primeiro num site de teste e revise IDs, condicoes e `template_id`.
+- Depois: copiar `schema-plugin.txt` para `wp-content/mu-plugins/` (ajustar NAP, IDs de pagina e nomes de servico) e aplicar `kit-settings.json` no kit (cores/fontes).
+- Pedir ao cliente para apagar o diretorio `replica-kit-8f3a2c` do site do Nelson se o kit nao for mais necessario.
